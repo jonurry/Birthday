@@ -10,7 +10,7 @@ feature 'Enter name and birthday' do
     visit('/')
     fill_in(:name, with: name)
     fill_in(:day, with: day)
-    find('#month').find(:xpath, "option[#{month - 1}]").select_option
+    find('#month').find(:xpath, "option[#{month}]").select_option
     click_button('Go!')
     expect(page).to have_content("Your birthday will be in #{17} days, #{name}")
   end
