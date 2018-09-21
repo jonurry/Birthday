@@ -8,6 +8,12 @@ describe BirthDates do
     allow(Date).to receive(:today).and_return(date_today)
   end
 
+  context 'when birthday is today' do
+    it 'should give number of days to today' do
+      expect(birth_dates.days_to_birthday(20, 9)).to be_zero
+    end
+  end
+
   context 'when date is next month' do
     it 'should give number of days to future date' do
       expect(birth_dates.days_to_birthday(7, 10)).to eq 17
@@ -32,8 +38,21 @@ describe BirthDates do
     end  
   end
 
-  it 'should give number of days to today' do
-    expect(birth_dates.days_to_birthday(20, 9)).to be_zero
-  end
+  describe 'leap years' do
+    context 'when the date crosses a leap year boundary' do
+      it 'should give correct number of days' do
+        date_today = Date.new(2020, 2, 20)
+        allow(Date).to receive(:today).and_return(date_today)
+        expect(birth_dates.days_to_birthday(10, 3)).to eq 19
+      end
+    end
 
+    context 'when the date crosses a non-leap year boundary' do
+      it 'should give correct number of days' do
+        date_today = Date.new(2019, 2, 20)
+        allow(Date).to receive(:today).and_return(date_today)
+        expect(birth_dates.days_to_birthday(10, 3)).to eq 18
+      end
+    end
+  end
 end
