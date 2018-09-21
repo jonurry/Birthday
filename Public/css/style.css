@@ -1,0 +1,13 @@
+body {
+  background-color: lightsteelblue;
+  color: #222222;
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+}
+
+.centred {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
