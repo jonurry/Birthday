@@ -18,7 +18,7 @@ class Birthday < Sinatra::Base
   end
 
   get '/celebrate' do
-
+    "It's your birthday, #{session[:name]}!!!"
   end
 
   get '/soon' do
